@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.thick-input {
+    min-height: 200px;
+}

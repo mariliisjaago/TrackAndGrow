@@ -1,0 +1,41 @@
+<mat-card class="card">
+    @if (goal?.isCompleted === true) { <mat-card-title class="goal-title-success">{{ goal?.title }}</mat-card-title> }
+    @else { <mat-card-title class="goal-title">{{ goal?.title }}</mat-card-title> }
+    <mat-card-content>
+      <p class="goal-content">{{ goal?.text }}</p>
+      <p>Is first child: {{ goal?.isFirstChild }}</p>
+    </mat-card-content>
+    <mat-card-actions class="actions-footer">
+        <div class="pull-left">
+            @if (goal?.isCompleted === true) {
+                <div class="completed-text">
+                    <mat-icon>check</mat-icon>
+                    {{ goal?.completedDate | date }}
+                </div>
+            }
+            @else {
+                <button mat-icon-button color="primary" aria-label="Complete goal" class="small-fab" (click)="completeGoal(goal)">
+                    <mat-icon>check</mat-icon>
+                </button>
+            }
+        </div>
+        
+
+        <div class="pull-right">
+            <button mat-icon-button color="accent" aria-label="Delete" class="small-fab" (click)="confirmAndThenDelete(goal?.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            
+            <button mat-icon-button color="secondary" pull-right aria-label="Add sub-goal" class="small-fab" (click)="startAddingChildGoal(goal)">
+                <mat-icon>add</mat-icon>
+            </button>
+
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<div class="children">
+    @for (myChild of goal?.children; track $index) {
+        <app-goal [goal]="myChild" (isUpdate)="updateGoals($event)"></app-goal>
+    }
+</div>

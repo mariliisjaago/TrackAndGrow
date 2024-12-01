@@ -1,0 +1,15 @@
+
+<div class="content">
+    <div class="menu">
+        <button mat-raised-button (click)="startAddingNewRoot()" color="primary">Add root</button>
+    </div>
+    
+    @if (roots$ | async; as myRoots) {
+        @for (myRoot of myRoots; track $index) {
+            <div class="root">
+                <app-goal [goal] = "myRoot" (isUpdate)="updateGoals($event)"></app-goal>
+            </div>
+        }
+    }
+</div>
+

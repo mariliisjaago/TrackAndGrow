@@ -1,0 +1,44 @@
+.card {
+    margin: 5px;
+}
+
+.goal-title {
+    padding: 13px;
+    background-color: #9C27B0;
+    color: white;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.goal-title-success {
+    padding: 13px;
+    background-color: #8BC34A;
+    color: white;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.goal-content {
+    padding-top: 8px;
+}
+
+.completed-text {
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.children {
+    display: flex;
+    flex-direction: row;
+}
+
+.small-fab {
+    transform: scale(0.8);
+}
+
+.actions-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1px;
+}

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Create new goal</h2>
+<mat-dialog-content [formGroup]="newGoal" class="dialog-content">
+  <mat-form-field >
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Content</mat-label>
+    <textarea class="thick-input" matInput formControlName="text"></textarea>
+  </mat-form-field>
+  <input type="hidden" formControlName="parentGoalId" />
+</mat-dialog-content>
+
+<mat-dialog-actions style="display: flex; justify-content: space-between;">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="!newGoal.valid">Add</button>
+</mat-dialog-actions>

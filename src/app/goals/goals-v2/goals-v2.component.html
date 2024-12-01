@@ -1,0 +1,9 @@
+<div class="content">
+    <div class="menu">
+        <button mat-raised-button (click)="startAddingNewRoot()" color="primary">Add root</button>
+    </div>
+
+    @if (goal$ | async; as goal) {
+        <app-goal-v2 [goal]="goal" (isUpdate)="updateGoals($event)"></app-goal-v2>
+    }
+</div>

@@ -1,0 +1,48 @@
+
+<div class="node">
+    
+    <div class="node-content">
+        <mat-card class="card">
+                @if (goal.isCompleted === true) { <mat-card-title class="goal-title-success" (click)="openNode()" style="cursor: pointer;">{{ goal.title }}</mat-card-title> }
+                @else { <mat-card-title class="goal-title" (click)="openNode()" style="cursor: pointer;">{{ goal.title }}</mat-card-title> }
+            <mat-card-content>
+              <p class="goal-content">{{ goal.title }}</p>
+            </mat-card-content>
+            <mat-card-actions class="actions-footer">
+                <div class="pull-left">
+                    @if (goal.isCompleted === true) {
+                        <div class="completed-text">
+                            <mat-icon>check</mat-icon>
+                            {{ goal.completedDate | date }}
+                        </div>
+                    }
+                    @else {
+                        <button mat-icon-button color="primary" aria-label="Complete goal" class="small-fab" (click)="completeGoal(goal)">
+                            <mat-icon>check</mat-icon>
+                        </button>
+                    }
+                </div>
+                
+        
+                <div class="pull-right">
+                    <button mat-icon-button color="accent" aria-label="Delete" class="small-fab" (click)="confirmAndThenDelete(goal.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    
+                    <button mat-icon-button color="secondary" pull-right aria-label="Add sub-goal" class="small-fab" (click)="startAddingChildGoal(goal)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+        
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+  
+    <div class="child" *ngIf="goal.firstChild">
+      <app-goal-v2 [goal]="goal.firstChild" (isUpdateGoal)="updateParent($event)"></app-goal-v2>
+    </div>
+  
+    <div class="sibling" *ngIf="goal.nextSibling">
+      <app-goal-v2 [goal]="goal.nextSibling" (isUpdateGoal)="updateParent($event)"></app-goal-v2>
+    </div>
+ </div>
